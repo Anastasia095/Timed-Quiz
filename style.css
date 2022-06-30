@@ -1,0 +1,62 @@
+body {
+    font-family: sans-serif, 'Press Start 2P' ;
+    margin: 0;
+}
+
+.high-scores {
+    display: inline-block;
+    
+}
+
+nav div a {
+    color: rgb(215, 144, 215);
+    text-decoration: none;
+}
+
+.timer {
+    float: right;
+    /* display: inline-block; */
+    text-align: right;
+}
+
+nav {
+ 
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+section {
+    padding-top: 3%;
+    text-align: center;
+    width: 45%;
+    margin: auto;
+    width: 50%;
+    font-weight: bold;
+}
+
+.btn {
+    background-color: rgb(205, 112, 245);
+    border-color: rgb(205, 112, 245);
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: white;
+    background-color: rgb(173, 8, 244);
+    border-color: rgb(184, 85, 226); 
+}
+
+.ContainerStyle {
+    background-color: pink;
+    padding-top: 3%;
+    padding-left: 3%;
+    padding-bottom: 3%;
+    width: 45%;
+    margin: auto;
+    width: 50%;
+}
+
+.ContainerStyle h1 {
+    text-align: left;
+}
