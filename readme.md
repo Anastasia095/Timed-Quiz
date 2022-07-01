@@ -8,4 +8,4 @@
 
 save high score if someone gets higher score update the user score and initials
 
-![Alt text](Image URL)
+![Screenshot](https://sun9-44.userapi.com/impf/nSBkdCQoDd9koQsYptzqmCmU35QixzfRcIYPWw/_wnlmoFmSQ4.jpg?size=1915x457&quality=95&sign=1e6dc2985cbb871ed8f0cee6ac13c7e8&type=album)

@@ -48,7 +48,7 @@ section {
 }
 
 .ContainerStyle {
-    background-color: pink;
+    /* background-color: pink; */
     padding-top: 3%;
     padding-left: 3%;
     padding-bottom: 3%;
@@ -59,4 +59,13 @@ section {
 
 .ContainerStyle h1 {
     text-align: left;
+}
+
+#qButtons {
+    margin: 0.5%;
+}
+
+.WrongCorrect {
+    font-style: italic;
+    color: rgb(218, 213, 213);
 }
