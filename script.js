@@ -5,7 +5,7 @@ var startQuiz = document.querySelector(".start");
 // var timer = document.getElementById("countDown");
 var hide = document.getElementById("mainContainer");
 var quizContainer;
-var i = 1;
+var i = 0;
 var j = 0;
 var correctAnswers = [2,1,2,3,1];
 var score = 0;
@@ -13,7 +13,7 @@ var initials;
 
 function startNewQuiz(){
 
- var questions = ["Why so JavaScript and Java have similar name?", "When a user views a page containing a JavaScript program, which machine actually executes the script?"," ______ JavaScript is also called client-side JavaScript."," __________ JavaScript is also called server-side JavaScript.", "What are variables used for in JavaScript Programs?" ];
+ var questions = ["Q1 Why so JavaScript and Java have similar name?", "Q2 When a user views a page containing a JavaScript program, which machine actually executes the script?","Q3 ______ JavaScript is also called client-side JavaScript.","Q4 __________ JavaScript is also called server-side JavaScript.", "Q5 What are variables used for in JavaScript Programs?" ];
 
     var answers = [ 
         ["JavaScript is a stripped-down version of Java",
@@ -38,7 +38,7 @@ function startNewQuiz(){
         "None of the above"]
     ];
     //console.log(answers);
-    console.log(answers[1][2]);
+    // console.log(answers[1][2]);
     console.table(answers);
 
 
@@ -64,6 +64,8 @@ function startNewQuiz(){
     document.body.appendChild(quizContainer);
 
     function createNodes(text, Q) {
+
+        // console.log("TEST EVENT LISTENER 2=========");
         //creating H1
         var h1Element = document.createElement("H1");
         //creating text node for H1
@@ -122,7 +124,6 @@ function startNewQuiz(){
         Qarea.appendChild(OL);
 
         //Event Delegation
-        //document.addEventListener('click',function(e){
         for(var k = 0; k < document.getElementsByClassName("btn-answer").length; k++) {
             document.getElementsByClassName("btn-answer")[k].addEventListener('click',function(e){    
             if(e.target){
@@ -140,7 +141,7 @@ function startNewQuiz(){
                 quizContainer.appendChild(next1);
                 next1.textContent = "Continue";
                 next1.classList.add("btn","btn-primary");
-                next1.setAttribute('id', 'continue-btn');
+                // next1.setAttribute('id', 'continue-btn');
                 var resultElement = document.createElement("H2");
                 resultElement.setAttribute('style','font-style: italic; color: rgb(218, 213, 213);');
                 if (qResult != correctAnswers[i]){
@@ -153,12 +154,37 @@ function startNewQuiz(){
 
                 quizContainer.appendChild(resultElement);
                 quizContainer.appendChild(next1);
-
+                
                 i++;
+                function clearScreen() {
+                    h1Element.remove();
+                    OL.remove();
+                    resultElement.remove();
+                    line.remove();
+                    next1.remove();
+                }
+                next1.addEventListener('click',function(e){  
+                    if (i == 5) {
+                        clearScreen();
+                        console.log("Your score is: " + score);
+                        var yourScore = document.createElement("H2");
+                        yourScore.classList.add("btn","btn-primary");
+                        yourScore.textContent = ("Your score is: " + score);
+                        quizContainer.appendChild(yourScore);
+                        
+                        return;
+                    }  
+                    if (e.target){
+                        clearScreen();
+                        createNodes(questions[i], answers[i]);
+                        
+                    }
 
-                next1.addEventListener("click", createNodes(questions[i], answers[i]));
+                });
 
-             }
+            }
+            
+
          });
         }
 
