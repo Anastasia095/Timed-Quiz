@@ -3,12 +3,39 @@ var startQuiz = document.querySelector(".start");
 // var timer = document.getElementById("countDown");
 var hide = document.getElementById("mainContainer");
 var quizContainer;
-var i = 0;
+var i = 1;
+var j = 0;
 
 function startNewQuiz(){
 
-    var questions = ["Inside which HTML element do we put the JavaScript?","Where is the correct place to insert a JavaScript?", "The external JavaScript file must contain the <script> tag."];
-    var answers = ["<javascript>", "<script>", "<scripting>", "<js>"];
+ var questions = ["Why so JavaScript and Java have similar name?", "When a user views a page containing a JavaScript program, which machine actually executes the script?"," ______ JavaScript is also called client-side JavaScript."," __________ JavaScript is also called server-side JavaScript.", "What are variables used for in JavaScript Programs?" ];
+
+    var answers = [ 
+        ["JavaScript is a stripped-down version of Java",
+        "JavaScript's syntax is loosely based on Java's",
+        "They both originated on the island of Java",
+        "None of the above"],
+        ["The User's machine running a Web browser",
+        "The Web server",
+        "A central machine deep within Netscape's corporate offices",
+        "None of the above"],
+        ["Microsoft",
+        "Navigator",
+        "LiveWire",
+        "Native"],
+        ["Microsoft",
+        "Navigator",
+        "LiveWire",
+        "Native"],
+        ["Storing numbers, dates, or other values",
+        "Varying randomly",
+        "Causing high-school algebra flashbacks",
+        "None of the above"]
+    ];
+    //console.log(answers);
+    console.log(answers[1][2]);
+    console.table(answers);
+
 
     function hideContainer() {
         if (hide.style.display === "none") {
@@ -60,10 +87,10 @@ function startNewQuiz(){
         button3.classList.add("btn","btn-primary");
         button4.classList.add("btn","btn-primary");
  
-        var A = document.createTextNode(Q);
-        var B = document.createTextNode(Q);
-        var C = document.createTextNode(Q);
-        var D = document.createTextNode(Q);
+        var A = document.createTextNode(Q[0]);
+        var B = document.createTextNode(Q[1]);
+        var C = document.createTextNode(Q[2]);
+        var D = document.createTextNode(Q[3]);
 
         h1Element.appendChild(question);
 
@@ -105,7 +132,7 @@ function startNewQuiz(){
 
     } 
 
-    createNodes(questions[i], answers[0]);
+    createNodes(questions[i], answers[i]);
 
     i++;
 }
