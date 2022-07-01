@@ -76,16 +76,16 @@ function startNewQuiz(){
         var button4 = document.createElement('button');
 
         //adding id to a button elements
-        button1.setAttribute('id', 'qButtons');
-        button2.setAttribute('id', 'qButtons');
-        button3.setAttribute('id', 'qButtons');
-        button4.setAttribute('id', 'qButtons');
+        button1.setAttribute('id', 'qButtons_1');
+        button2.setAttribute('id', 'qButtons_2');
+        button3.setAttribute('id', 'qButtons_3');
+        button4.setAttribute('id', 'qButtons_4');
 
         //adding bootstrap class to style buttons
-        button1.classList.add("btn","btn-primary");
-        button2.classList.add("btn","btn-primary");
-        button3.classList.add("btn","btn-primary");
-        button4.classList.add("btn","btn-primary");
+        button1.classList.add("btn","btn-primary","btn-answer");
+        button2.classList.add("btn","btn-primary","btn-answer");
+        button3.classList.add("btn","btn-primary","btn-answer");
+        button4.classList.add("btn","btn-primary","btn-answer");
  
         var A = document.createTextNode(Q[0]);
         var B = document.createTextNode(Q[1]);
@@ -117,9 +117,18 @@ function startNewQuiz(){
         Qarea.appendChild(OL);
 
         //Event Delegation
-        document.addEventListener('click',function(e){
-            if(e.target && e.target.id== 'qButtons'){
-                console.log("TEST");
+        //document.addEventListener('click',function(e){
+        for(var k = 0; k < document.getElementsByClassName("btn-answer").length; k++) {
+            document.getElementsByClassName("btn-answer")[k].addEventListener('click',function(e){    
+            if(e.target){
+                //var x = e.target;
+                var qResult = 0;
+                for(var k2 = 0; k2 <= 4; k2++) {
+                    if(e.target.id == 'qButtons_' + k2)
+                     qResult = k2 - 1;
+                }
+                console.log('Answer is number ' + qResult);
+                console.log(e.target.lastChild);
                 var line = document.createElement("hr");
                 quizContainer.appendChild(line);
                 //creating H2
@@ -129,6 +138,7 @@ function startNewQuiz(){
                 quizContainer.appendChild(resultElement);
              }
          });
+        }
 
     } 
 

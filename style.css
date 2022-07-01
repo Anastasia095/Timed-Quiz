@@ -61,7 +61,7 @@ section {
     text-align: left;
 }
 
-#qButtons {
+.btn-primary {
     margin: 0.5%;
 }
 
