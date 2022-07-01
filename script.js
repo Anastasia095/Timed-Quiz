@@ -1,3 +1,5 @@
+// quiz source http://mcqspdfs.blogspot.com/2013/08/60-top-javascript-multiple-choice.html
+
 // Get references to the #generate element
 var startQuiz = document.querySelector(".start");
 // var timer = document.getElementById("countDown");
@@ -5,6 +7,9 @@ var hide = document.getElementById("mainContainer");
 var quizContainer;
 var i = 1;
 var j = 0;
+var correctAnswers = [2,1,2,3,1];
+var score = 0;
+var initials;
 
 function startNewQuiz(){
 
@@ -130,12 +135,29 @@ function startNewQuiz(){
                 console.log('Answer is number ' + qResult);
                 console.log(e.target.lastChild);
                 var line = document.createElement("hr");
+                var next1 = document.createElement('button');
                 quizContainer.appendChild(line);
-                //creating H2
+                quizContainer.appendChild(next1);
+                next1.textContent = "Continue";
+                next1.classList.add("btn","btn-primary");
+                next1.setAttribute('id', 'continue-btn');
                 var resultElement = document.createElement("H2");
                 resultElement.setAttribute('style','font-style: italic; color: rgb(218, 213, 213);');
-                resultElement.textContent = "Test!";
+                if (qResult != correctAnswers[i]){
+                    resultElement.textContent = "Wrong!";
+                }
+                else{
+                    resultElement.textContent = "Correct!";
+                    score++;
+                }
+
                 quizContainer.appendChild(resultElement);
+                quizContainer.appendChild(next1);
+
+                i++;
+
+                next1.addEventListener("click", createNodes(questions[i], answers[i]));
+
              }
          });
         }
@@ -144,7 +166,6 @@ function startNewQuiz(){
 
     createNodes(questions[i], answers[i]);
 
-    i++;
 }
 
 // Add event listener to generate button
