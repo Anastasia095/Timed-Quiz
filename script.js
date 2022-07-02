@@ -9,9 +9,26 @@ var i = 0;
 var j = 0;
 var correctAnswers = [2,1,2,3,1];
 var score = 0;
+var timer = document.getElementById("countDown");
 var initials;
+var secondsLeft = 600;
+
+countDown.setAttribute('style','font-size: large;');
 
 function startNewQuiz(){
+
+    function setTime() {
+        var timerInterval = setInterval(function () {
+          secondsLeft--;
+          
+          timer.textContent = secondsLeft;
+          if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+          }
+        }, 1000);
+    }
+
+    setTime();
 
  var questions = ["Q1 Why so JavaScript and Java have similar name?", "Q2 When a user views a page containing a JavaScript program, which machine actually executes the script?","Q3 ______ JavaScript is also called client-side JavaScript.","Q4 __________ JavaScript is also called server-side JavaScript.", "Q5 What are variables used for in JavaScript Programs?" ];
 
@@ -125,7 +142,12 @@ function startNewQuiz(){
 
         //Event Delegation
         for(var k = 0; k < document.getElementsByClassName("btn-answer").length; k++) {
-            document.getElementsByClassName("btn-answer")[k].addEventListener('click',function(e){    
+            document.getElementsByClassName("btn-answer")[k].addEventListener('click',function(e){
+            //preventing multiple clicks
+            button1.disabled = true;
+            button2.disabled = true;
+            button3.disabled = true;
+            button4.disabled = true;
             if(e.target){
                 //var x = e.target;
                 var qResult = 0;
@@ -146,6 +168,7 @@ function startNewQuiz(){
                 resultElement.setAttribute('style','font-style: italic; color: rgb(218, 213, 213);');
                 if (qResult != correctAnswers[i]){
                     resultElement.textContent = "Wrong!";
+                    secondsLeft-=10;
                 }
                 else{
                     resultElement.textContent = "Correct!";
